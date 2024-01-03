@@ -41,7 +41,7 @@ function App() {
   const winSound = () => {
     // Configuração do som
     const som = new Howl({
-      src: ['src/assets/sounds/win-sound.mp3'], // Substitua pelo caminho do seu arquivo de som
+      src: ['././sounds/win-sound.mp3'], // Substitua pelo caminho do seu arquivo de som
       volume: 1, // Ajuste o volume conforme necessário
     });
 
@@ -51,7 +51,7 @@ function App() {
   const errorSound = () => {
     // Configuração do som
     const som = new Howl({
-      src: ['src/assets/sounds/error-sound.mp3'], // Substitua pelo caminho do seu arquivo de som
+      src: ['././sounds/error-sound.mp3'], // Substitua pelo caminho do seu arquivo de som
       volume: 7, // Ajuste o volume conforme necessário
     });
 
