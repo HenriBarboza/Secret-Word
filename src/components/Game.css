@@ -46,3 +46,34 @@
     text-align: center;
     margin-right: 1em;
 }
+
+@media (max-width: 769px){
+    .wordContainer{
+        padding: 0.8em;
+        display: flex;
+        border: 16px solid #ecfa00;
+        justify-content: center;
+    }
+    .letter, .blankSquare {
+        font-size: 40px;
+        line-height: 1.5;
+        border: 2px solid #000;
+        height: 50px;
+        width: 50px;
+    }
+
+}
+
+@media (max-width: 440px){
+    .wordContainer{
+        padding: 0.6em;
+        border: 12px solid #ecfa00;
+    }
+
+    .letter, .blankSquare{
+        font-size: 25px;
+        line-height: 1.5;
+        height: 37px;
+        width: 37px;
+    }
+}

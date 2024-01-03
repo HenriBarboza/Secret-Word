@@ -2,6 +2,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { Howl } from 'howler'
 
 // Components
 import StartScreen from './components/StartScreen'
@@ -35,6 +36,28 @@ function App() {
   const [wrongLetters, setWrongLetters] = useState([])
   const [guesses, setGuesses] = useState(guessesQty)
   const [score, setScore] = useState(0)
+
+
+  const winSound = () => {
+    // Configuração do som
+    const som = new Howl({
+      src: ['src/assets/sounds/win-sound.mp3'], // Substitua pelo caminho do seu arquivo de som
+      volume: 1, // Ajuste o volume conforme necessário
+    });
+
+    // Reproduz o som
+    som.play();
+  };
+  const errorSound = () => {
+    // Configuração do som
+    const som = new Howl({
+      src: ['src/assets/sounds/error-sound.mp3'], // Substitua pelo caminho do seu arquivo de som
+      volume: 7, // Ajuste o volume conforme necessário
+    });
+
+    // Reproduz o som
+    som.play();
+  };
 
   const pickWordAndCategory = useCallback(() => {
     // pick a random category
@@ -88,6 +111,7 @@ function App() {
         ...actualWrongLetters,
         normalizedLetter,
       ]);
+      errorSound();
       setGuesses((actualGuesses) => actualGuesses - 1)
     }
 
@@ -115,8 +139,8 @@ function App() {
     // win condition
     if (guessedLetters.length === uniqueLetters.length && gameStage === stages[1].name) {
       // add score
+      winSound();
       setScore((actualScore) => actualScore += 100)
-
       // restart game with new word
       startGame();
     }
@@ -135,6 +159,8 @@ function App() {
   return (
     <>
       <div className="app">
+        {/* <button onClick={winSound}>Começar o jogo</button>
+        <button onClick={errorSound}>Começar o jogo</button> */}
         {gameStage === "start" && <StartScreen startGame={startGame} />}
         {gameStage === "game" && (
           <Game
